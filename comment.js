@@ -8,9 +8,34 @@ const User=require('./models/user');
 const Artist=require('./models/artist');
 
 
+//middlware function to check if a user comments more than one time for a  song
+router.use(function (req,res,next){
+	Song.find({
+		$and:[		
+			{"title" : req.body.title},
+			{"comments" :{ 
+				$elemMatch :{
+						"user" : req.body.name
+				}
+			}}
+		]
+	}, 
+	function(err, doc){
+		if (err) return res.sendStatus(500, { error: err });
+		console.log(doc);
+		if(doc.length){
+			res.send("No multiple comments allowed;")
+		}else{
+			next();
+		}
+	});
+});
+
+
+
 router.post('/',async(req,res) => {
 
-
+	var query = {'title' : req.body.title};
 	Song.findOneAndUpdate(query, {
 		$push: { "comments" :
 				{ 

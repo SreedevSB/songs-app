@@ -14,7 +14,9 @@ router.post('/famous',async(req,res) => {
             if (err) return res.sendStatus(500, { error: err });
             //get famous artists
             var famousArtists =doc;
-
+            return famousArtists;
+        }
+    ).then((famousArtists)=>{
             //concat their first and last names and push it to names array.
             names=[];
             for(i=0;i<famousArtists.length;i++){
