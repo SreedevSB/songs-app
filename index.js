@@ -1,5 +1,6 @@
 
 const express = require('express');
+const serverless = require('serverless-http');
 const app = express();
 const connectDB=require('./connectDB');
 
@@ -21,4 +22,6 @@ app.use('/api/song', song);
 
 
 
-const server=app.listen(3000,function(){})
+//const server=app.listen(3000,function(){})
+module.exports=app;
+module.exports.handler=serverless(app);
