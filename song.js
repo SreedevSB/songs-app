@@ -8,7 +8,7 @@ const Artist=require('./models/artist');
 
 
 
-router.post('/famous',async(req,res) => {
+router.get('/famous',async(req,res) => {
     Artist.find({isFamous:true},
         (err,doc)=> {
             if (err) return res.sendStatus(500, { error: err });
@@ -112,7 +112,7 @@ router.post('/famous',async(req,res) => {
 
 
 
-router.post('/',async(req,res) => {
+router.get('/',async(req,res) => {
 
 	Song.find(
 	function(err, doc){
