@@ -9,14 +9,15 @@ const song=require('./song');
 
 app.use(express.json());
 
-app.use('/home', function(req,res){
-	res.send("Song app");
-	
-});
+
 
 app.use('/api/comment', comment);
 app.use('/api/songs', song);
 
+app.use('/', function(req,res){
+	res.send("Song app");
+	
+});
 //app.post('/api/famous', famous);
 
 const port=process.env.PORT || 3000
