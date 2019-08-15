@@ -22,7 +22,7 @@ router.use(function (req,res,next){
 	}, 
 	function(err, doc){
 		if (err) return res.sendStatus(500, { error: err });
-		console.log(doc);
+		//console.log(doc);
 		if(doc.length){
 			res.send("No multiple comments allowed;")
 		}else{
