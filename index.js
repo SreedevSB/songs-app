@@ -9,7 +9,7 @@ const song=require('./song');
 
 app.use(express.json());
 
-app.use('/home', function(req,res){
+app.use('/', function(req,res){
 	res.send("Song app");
 	
 });
