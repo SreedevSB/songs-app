@@ -15,7 +15,7 @@ app.use('/home', function(req,res){
 });
 
 app.use('/api/comment', comment);
-app.use('/api/song', song);
+app.use('/api/songs', song);
 
 //app.post('/api/famous', famous);
 
